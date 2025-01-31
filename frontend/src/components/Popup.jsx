@@ -1,5 +1,5 @@
 
-
+// api call (country) 
 function Popup({country}) {
     return (
         <div>
