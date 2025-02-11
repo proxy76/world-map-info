@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className='container'>
-      <WorldMap />
+      {/* <WorldMap /> */}
     </div>
   )
 }
