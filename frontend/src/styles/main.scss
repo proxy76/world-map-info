@@ -19,7 +19,10 @@ svg {
 }
 
 path {
-    fill: #2a354d;
+    .focused {
+        fill: pink;
+        stroke:black;
+    }
 }
 
 .App {
