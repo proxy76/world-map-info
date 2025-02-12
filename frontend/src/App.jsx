@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './styles/main.scss';
-import TestComponent from './components/TestComponent'
+import MainMap from './components/MainMap';
 
 function App() {
 
   return (
     <div className='container'>
-      <TestComponent />
+      <MainMap />
     </div>
   )
 }
