@@ -1,22 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-class Country(models.Model):  # Ensure it inherits from models.Model
-    name = models.CharField(max_length=255, null=True)
-
-    def serializer(self):
-        return {
-            "name": self.name
-        }
 
 class User(AbstractUser):
     user_address = models.CharField(max_length=255, null=True)
+    countriesVisited = models.JSONField(default=list)
+    countriesWishlist = models.JSONField(default=list)
     profile_picture = models.ImageField(
         upload_to='user_images/',
         default='user_images/anonymous.png'
     )
-    countries = models.ManyToManyField(Country, blank=True)
-    
+
     # Fix reverse accessor name clashes
     groups = models.ManyToManyField(
         'auth.Group',

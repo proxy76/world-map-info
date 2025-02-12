@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from .models import User, Country
+from .models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import json
