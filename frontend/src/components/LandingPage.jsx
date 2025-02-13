@@ -1,19 +1,28 @@
 import Header from "./Header";
+import { useEffect } from 'react';
+import { useFetchUser, useState } from "../hooks/useFetchUser";
 
 export default function LandingPage() {
+    const [pfp, setPfp] = useState('');
 
+    useEffect(() => {
+        useFetchUser().then((response) => {
+            setPfp(response.data.profile_picture);
+        }
+        )
+    })
     return (
-     <>
-        <Header />
+        <>
+            <Header />
 
-        <div className="mainTitle">
+            <div className="mainTitle">
 
-        </div>
+            </div>
 
-        <div className="content">
+            <div className="content">
 
-        </div>
-     </>
+            </div>
+        </>
     )
 
 }

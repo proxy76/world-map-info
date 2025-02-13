@@ -29,4 +29,6 @@ class User(AbstractUser):
             "email": self.email,
             "address": self.user_address,  # Fixed spelling typo
             "profile_picture": self.profile_picture.url if self.profile_picture else None,
+            "countriesVisited": self.countriesVisited,
+            "countriesWishlist": self.countriesWishlist
         }

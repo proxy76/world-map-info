@@ -61,3 +61,9 @@ def logout_view(request):
         return JsonResponse({"message": "Username logged out", "status":"success"}, status=200)
     else:
         return JsonResponse({"message": "User not logged in", "status":"failed"}, status=403)
+    
+@login_required
+def user_info(request):
+    user = request.user
+    return JsonResponse({"username": user.username, "email": user.email, "profile_picture": user.profile_picture, "countriesVisited" : user.countriesVisited, "countriesWishlist": user.countriesWishlist}, status=200)
+    
