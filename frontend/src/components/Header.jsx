@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
-import '../styles/header.scss';
+import React, { useState, useEffect, useRef } from 'react';
+import '../styles/main.scss';
 
 export default function Header() {
     const [showPopup, setShowPopup] = useState(false);
+    const popupRef = useRef(null);
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
+
+    const handleClickOutside = (event) => {
+        if (popupRef.current && !popupRef.current.contains(event.target)) {
+            setShowPopup(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="wrapper">
@@ -20,7 +34,7 @@ export default function Header() {
                         onClick={togglePopup}
                     />
                     {showPopup && (
-                        <div className="popup">
+                        <div className="popup" ref={popupRef}>
                             <p>Login</p>
                             <p>Logout</p>
                         </div>
@@ -28,6 +42,5 @@ export default function Header() {
                 </div>
             </div>
         </div>
-
     );
 }
