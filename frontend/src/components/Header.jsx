@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Header.css';
+import '../styles/header.scss';
 
 export default function Header() {
     const [showPopup, setShowPopup] = useState(false);
