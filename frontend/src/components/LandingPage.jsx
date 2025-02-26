@@ -1,6 +1,6 @@
 import Header from "./Header";
-import { useEffect } from 'react';
-import { useFetchUser, useState } from "../hooks/useFetchUser";
+import { useEffect, useState } from 'react';
+import useFetchUser  from "../hooks/useFetchUser";
 
 export default function LandingPage() {
     const [pfp, setPfp] = useState('');

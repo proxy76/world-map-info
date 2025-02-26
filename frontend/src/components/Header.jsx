@@ -33,6 +33,7 @@ export default function Header() {
                         className="profile-picture"
                         onClick={togglePopup}
                     />
+                    {/* de facut dropdown in fct daca e logat sau nu */}
                     {showPopup && (
                         <div className="popup" ref={popupRef}>
                             <p>Login</p>
