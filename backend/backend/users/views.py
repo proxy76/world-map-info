@@ -61,9 +61,22 @@ def logout_view(request):
         return JsonResponse({"message": "Username logged out", "status":"success"}, status=200)
     else:
         return JsonResponse({"message": "User not logged in", "status":"failed"}, status=403)
-    
+
+@csrf_exempt
 @login_required
 def user_info(request):
+    if request.method == "GET":
+        if not request.user:
+             return JsonResponse({"message": "Username not logged in", "status":"failed"}, status=403)
     user = request.user
     return JsonResponse({"username": user.username, "email": user.email, "profile_picture": user.profile_picture, "countriesVisited" : user.countriesVisited, "countriesWishlist": user.countriesWishlist}, status=200)
     
+@csrf_exempt
+def check_login_view(request):
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            return JsonResponse({"isLogged": True}, status=200)
+        else:
+            return JsonResponse({"isLogged": False}, status=200)
+    else:
+        return JsonResponse({"error": "Invalid request method"}, status=405)
